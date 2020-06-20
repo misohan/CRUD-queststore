@@ -102,13 +102,12 @@
           <h2>
               <a href="/add">Add mentor</a>
               &nbsp;&nbsp;&nbsp;
-              <a href="/mentors">List All mentors</a>
 
           </h2>
       </center>
       <div align="center">
           <table border="1" cellpadding="5">
-              <caption><h2>List of students</h2></caption>
+              <caption><h2>List of mentors</h2></caption>
               <tr>
                   <th>ID</th>
                   <th>First name</th>
