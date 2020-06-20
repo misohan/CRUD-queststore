@@ -38,13 +38,17 @@
 
         <div id="mentor" class="vis">
           <div class="form">
-            <form>
-              <label for="fname">First name:</label><br>
-              <input type="text" id="fname" name="fname"><br><br>
-              <label for="lname">Last name:</label><br>
-              <input type="text" id="fname" name="fname"><br><br>
-              <input class="button button2" type="submit" value="Create">
-            </form>
+                <form  action="adAddMentord" method="post">
+                  <label>Id:</label>
+                  <input value="" name="id">
+                  <label>First name:</label>
+                  <input value="" name="firstName">
+                  <label>Last name:</label>
+                  <input value="" name="lastName">
+                  <label>Age:</label>
+                  <input value="" name="age">
+                  <button type="submit">Send</button>
+                </form>
           </div>
         </div>
         <div id="class" class="inv">
