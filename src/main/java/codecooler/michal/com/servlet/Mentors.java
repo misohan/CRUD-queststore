@@ -30,19 +30,19 @@ public class Mentors extends HttpServlet {
 
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        String id = request.getParameter(request.getParameter("id"));
-        String firstname = request.getParameter("firstname");
-        String lastname = request.getParameter("lastname");
-        String age = request.getParameter(request.getParameter("age"));
-
-        Mentor mentor = new Mentor(id, firstname, lastname, age);
-        mentorDAO.createMentor(mentor);
-        response.sendRedirect("list");
-
-
-    }
+//    public void doPost(HttpServletRequest request, HttpServletResponse response)
+//            throws IOException, ServletException {
+//        String id = request.getParameter(request.getParameter("id"));
+//        String firstname = request.getParameter("firstname");
+//        String lastname = request.getParameter("lastname");
+//        String age = request.getParameter(request.getParameter("age"));
+//
+//        Mentor mentor = new Mentor(id);
+//        mentorDAO.createMentor(mentor);
+//        response.sendRedirect("list");
+//
+//
+//    }
 
     public void listBook(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {

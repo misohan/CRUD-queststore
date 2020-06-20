@@ -1,26 +1,30 @@
 package codecooler.michal.com.model;
 
 public class Mentor {
-    private String id;
+    private int id;
     private String firstName;
     private String lastName;
-    private String age;
+    private int age;
+
+    public Mentor(int id) {
+        this.id = id;
+    }
 
     public Mentor() {
     }
 
-    public Mentor(String id, String firstName, String lastName, String age) {
+    public Mentor(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -40,11 +44,11 @@ public class Mentor {
         this.lastName = lastName;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 }

@@ -25,10 +25,10 @@ public class AddMentor extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        String id = request.getParameter(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        String age = request.getParameter(request.getParameter("age"));
+        int age = Integer.parseInt(request.getParameter("age"));
 
         Mentor mentor = new Mentor(id, firstName, lastName, age);
         mentorDAO.createMentor(mentor);

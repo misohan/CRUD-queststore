@@ -18,19 +18,23 @@ public class MentorJDBCDAO implements MentorDAO {
         this.connection = new UserSQLConnection();
     }
 
+
+
     @Override
     public void createMentor(Mentor mentor){
 
         String sql = "INSERT INTO mentors (id, firstname, lastname, age) " +
-                "VALUES (?,?,?,?)";
+                "VALUES (?,?,?,?);";
 
         try (Connection con = dbConn.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
-            pst.setString(1, mentor.getId());
+            pst.setInt(1, mentor.getId());
             pst.setString(2, mentor.getFirstName());
             pst.setString(3, mentor.getLastName());
-            pst.setString(4, mentor.getAge());
+            pst.setInt(4, mentor.getAge());
+
+            System.out.println(sql);
 
             pst.executeUpdate();
 
@@ -54,10 +58,10 @@ public class MentorJDBCDAO implements MentorDAO {
 
                 Mentor mentor = new Mentor();
 
-                mentor.setId(resultSet.getString("id"));
+                mentor.setId(resultSet.getInt("id"));
                 mentor.setFirstName(resultSet.getString("firstname"));
                 mentor.setLastName(resultSet.getString("lastname"));
-                mentor.setAge(resultSet.getString("age"));
+                mentor.setAge(resultSet.getInt("age"));
 
                 listMentor.add(mentor);
             }
