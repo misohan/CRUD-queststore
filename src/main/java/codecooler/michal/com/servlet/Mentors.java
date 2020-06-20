@@ -34,7 +34,7 @@ public class Mentors extends HttpServlet {
 //            throws IOException, ServletException {
 //        String id = request.getParameter(request.getParameter("id"));
 //        String firstname = request.getParameter("firstname");
-//        String lastname = request.getParameter("lastname");
+//        String lastname = request.getParameter("lasetname");
 //        String age = request.getParameter(request.getParameter("age"));
 //
 //        Mentor mentor = new Mentor(id);
