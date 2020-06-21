@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "delete", urlPatterns = {"/delete"}, loadOnStartup = 3)
 public class DeleteMentor extends HttpServlet {
-    private MentorDAO mentorDAO = new MentorJDBCDAO();
+    final MentorDAO mentorDAO = new MentorJDBCDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -27,6 +27,7 @@ public class DeleteMentor extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
     }
+
 }
 
 

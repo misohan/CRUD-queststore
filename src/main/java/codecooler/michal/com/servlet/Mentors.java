@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "listmentors", urlPatterns = {"/list"}, loadOnStartup = 1)
 public class Mentors extends HttpServlet {
-    private MentorDAO mentorDAO = new MentorJDBCDAO();
+    final MentorDAO mentorDAO = new MentorJDBCDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

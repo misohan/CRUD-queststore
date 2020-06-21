@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "add", urlPatterns = {"/add"}, loadOnStartup = 2)
 public class AddMentor extends HttpServlet {
-    private MentorDAO mentorDAO = new MentorJDBCDAO();
+    final MentorDAO mentorDAO = new MentorJDBCDAO();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
