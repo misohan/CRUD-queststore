@@ -18,8 +18,6 @@ public class MentorJDBCDAO implements MentorDAO {
         this.connection = new UserSQLConnection();
     }
 
-
-
     @Override
     public void createMentor(Mentor mentor){
 
@@ -43,7 +41,7 @@ public class MentorJDBCDAO implements MentorDAO {
         }
     }
 
-    public List<Mentor> litAllMentors() {
+    public List<Mentor> listAllMentors() {
         ResultSet resultSet = null;
         List<Mentor> listMentor = new ArrayList<>();
 
@@ -72,4 +70,22 @@ public class MentorJDBCDAO implements MentorDAO {
         }
         return null;
     }
+
+    @Override
+    public void removeUser(Mentor mentor) {
+
+        String sql = "DELETE FROM mentors WHERE id=?";
+
+        try
+                (Connection con = dbConn.connect();
+                 PreparedStatement ptmt = con.prepareStatement(sql)) {
+
+            ptmt.setInt(1, mentor.getId());
+            ptmt.executeUpdate();
+            System.out.println("Data deleted successfully");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

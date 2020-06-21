@@ -12,38 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "delete", urlPatterns = {"/delete"}, loadOnStartup = 2)
+@WebServlet(name = "delete", urlPatterns = {"/delete"}, loadOnStartup = 3)
 public class DeleteMentor extends HttpServlet {
     private MentorDAO mentorDAO = new MentorJDBCDAO();
 
-
-    public void doDelete(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        int age = Integer.parseInt(request.getParameter("age"));
-
-        Mentor mentor = new Mentor(id, firstName, lastName, age);
-        mentorDAO.createMentor(mentor);
-
-
-        response.sendRedirect("list");
-
-
     }
-
-
-
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/MentorForm.jsp");
+
+        int id = Integer.parseInt(request.getParameter("id"));
+        Mentor mentor = new Mentor(id);
+        mentorDAO.removeUser(mentor);
+        response.sendRedirect("list");
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
-
-
-
     }
-
 }
 
 

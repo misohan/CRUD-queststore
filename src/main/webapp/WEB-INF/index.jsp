@@ -8,9 +8,7 @@
   <title>Document</title>
    <style><%@include file="/WEB-INF/css/style.css"%></style>
 
-
 </head>
-
 <body>
   <div class="header">
     <h1>Admin menu</h1>
@@ -22,7 +20,6 @@
     <a href="../mentor/mentor.html">Mentor</a>
     <a href="../loginPage/loginPage.html">Login page</a>
   </div>
-
   <div class="row">
     <div class="column">
       <div class="card">
@@ -33,22 +30,19 @@
           <option value="class">class</option>
           <option value="experience">levels of experience</option>
         <select>
-
-
-
         <div id="mentor" class="vis">
           <div class="form">
-                <form  action="adAddMentord" method="post">
-                  <label>Id:</label>
-                  <input value="" name="id">
-                  <label>First name:</label>
-                  <input value="" name="firstName">
-                  <label>Last name:</label>
-                  <input value="" name="lastName">
-                  <label>Age:</label>
-                  <input value="" name="age">
-                  <button type="submit">Send</button>
-                </form>
+              <form action="/add" method="post">
+                  <label>Id:</label><br>
+                  <input value="" name="id"><br><br>
+                  <label>First name:</label><br>
+                  <input value="" name="firstName"><br><br>
+                  <label>Last name:</label><br>
+                  <input value="" name="lastName"><br><br>
+                  <label>Age:</label><br>
+                  <input value="" name="age"><br><br>
+                  <button class="button button2" type="submit">Send</button>
+              </form>
           </div>
         </div>
         <div id="class" class="inv">
@@ -57,7 +51,7 @@
               <label for="fname">Class name:</label><br>
               <input type="text" id="fname" name="fname"><br><br>
               <label for="lname">Number of students:</label><br>
-              <input type="text" id="fname" name="fname"><br><br>
+              <input type="text" id="lname" name="fname"><br><br>
               <input class="button button2" type="submit" value="Create">
             </form>
           </div>
@@ -100,14 +94,7 @@
     <div class="column">
       <div class="card">
         <h2>View mentor's profile</h2>
-
         <center>
-          <h1>Mentors CRUD</h1>
-          <h2>
-              <a href="/add">Add mentor</a>
-              &nbsp;&nbsp;&nbsp;
-
-          </h2>
       </center>
       <div align="center">
           <table border="1" cellpadding="5">
@@ -125,26 +112,20 @@
                       <td><c:out value="${mentor.firstName}" /></td>
                       <td><c:out value="${mentor.lastName}" /></td>
                       <td><c:out value="${mentor.age}" /></td>
-
                       <td>
                           <a href="/edit?id=<c:out value='${mentor.id}' />">Edit</a>
-                          &nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="/delete?id=<c:out value='${mentor.id}' />">Delete</a>
                       </td>
                   </tr>
               </c:forEach>
           </table>
       </div>
-
       </div>
     </div>
   </div>
   <script src="admin.js"></script>
-
   <div class="footer">
     <h2>Footer</h2>
   </div>
 </body>
-
-
 </html>
