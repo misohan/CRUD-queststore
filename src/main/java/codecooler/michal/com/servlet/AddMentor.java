@@ -22,7 +22,6 @@ import java.util.List;
 public class AddMentor extends HttpServlet {
     private MentorDAO mentorDAO = new MentorJDBCDAO();
 
-
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -33,16 +32,12 @@ public class AddMentor extends HttpServlet {
         Mentor mentor = new Mentor(id, firstName, lastName, age);
         mentorDAO.createMentor(mentor);
         response.sendRedirect("list");
-
-
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
-
     }
-
 }
 
 

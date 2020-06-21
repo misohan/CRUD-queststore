@@ -29,7 +29,6 @@ public class DeleteMentor extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
-
     }
 }
 

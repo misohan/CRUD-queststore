@@ -18,8 +18,6 @@ public class MentorJDBCDAO implements MentorDAO {
         this.connection = new UserSQLConnection();
     }
 
-
-
     @Override
     public void createMentor(Mentor mentor){
 
@@ -88,7 +86,6 @@ public class MentorJDBCDAO implements MentorDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 }
