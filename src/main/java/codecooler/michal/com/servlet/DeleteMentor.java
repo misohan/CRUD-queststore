@@ -16,9 +16,6 @@ import java.io.IOException;
 public class DeleteMentor extends HttpServlet {
     private MentorDAO mentorDAO = new MentorJDBCDAO();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-    }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

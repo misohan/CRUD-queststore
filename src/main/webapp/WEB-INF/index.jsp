@@ -120,7 +120,7 @@
               </c:forEach>
           </table>
       </div>
-      </div>
+     </div>
     </div>
   </div>
   <script src="admin.js"></script>
