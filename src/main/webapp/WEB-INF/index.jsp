@@ -38,7 +38,7 @@
 
         <div id="mentor" class="vis">
           <div class="form">
-                <form  action="adAddMentord" method="post">
+                <form  action="/add" method="post">
                   <label>Id:</label>
                   <input value="" name="id">
                   <label>First name:</label>
@@ -49,6 +49,12 @@
                   <input value="" name="age">
                   <button type="submit">Send</button>
                 </form>
+              <form  action="/delete" method="delete">
+                  <label>Id:</label>
+                  <input value="" name="id">
+                  <button type="submit">Send</button>
+              </form>
+
           </div>
         </div>
         <div id="class" class="inv">
@@ -57,7 +63,7 @@
               <label for="fname">Class name:</label><br>
               <input type="text" id="fname" name="fname"><br><br>
               <label for="lname">Number of students:</label><br>
-              <input type="text" id="fname" name="fname"><br><br>
+              <input type="text" id="lname" name="fname"><br><br>
               <input class="button button2" type="submit" value="Create">
             </form>
           </div>
@@ -102,11 +108,9 @@
         <h2>View mentor's profile</h2>
 
         <center>
-          <h1>Mentors CRUD</h1>
+
           <h2>
               <a href="/add">Add mentor</a>
-              &nbsp;&nbsp;&nbsp;
-
           </h2>
       </center>
       <div align="center">
@@ -128,7 +132,6 @@
 
                       <td>
                           <a href="/edit?id=<c:out value='${mentor.id}' />">Edit</a>
-                          &nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="/delete?id=<c:out value='${mentor.id}' />">Delete</a>
                       </td>
                   </tr>

@@ -12,7 +12,5 @@ public class QuestStore {
         Mentor mentor = new Mentor(7,"KAJO","All set", 5);
 
         mentorDAO.createMentor(mentor);
-
     }
-
 }

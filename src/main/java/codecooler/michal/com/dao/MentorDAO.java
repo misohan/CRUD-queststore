@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface MentorDAO {
     void createMentor(Mentor mentor);
-    List<Mentor> litAllMentors();
+    List<Mentor> listAllMentors();
+    void removeUser(Mentor mentor);
 }

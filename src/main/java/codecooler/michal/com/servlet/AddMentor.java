@@ -32,21 +32,14 @@ public class AddMentor extends HttpServlet {
 
         Mentor mentor = new Mentor(id, firstName, lastName, age);
         mentorDAO.createMentor(mentor);
-
-
         response.sendRedirect("list");
 
 
     }
-
-
-
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/MentorForm.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
-
-
 
     }
 

@@ -22,12 +22,9 @@ public class Mentors extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
-        List<Mentor> listMentor = mentorDAO.litAllMentors();
+        List<Mentor> listMentor = mentorDAO.listAllMentors();
         request.setAttribute("listMentor", listMentor);
         dispatcher.forward(request, response);
-
-
-
     }
 
 //    public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +43,7 @@ public class Mentors extends HttpServlet {
 
     public void listBook(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Mentor> listMentor = mentorDAO.litAllMentors();
+        List<Mentor> listMentor = mentorDAO.listAllMentors();
         request.setAttribute("listMentor", listMentor);
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
