@@ -26,9 +26,6 @@ public class DeleteMentor extends HttpServlet {
         Mentor mentor = new Mentor(id);
         mentorDAO.removeUser(mentor);
         response.sendRedirect("list");
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
-        dispatcher.forward(request, response);
     }
 }
 
