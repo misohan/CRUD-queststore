@@ -14,11 +14,8 @@ import java.io.IOException;
 
 @WebServlet(name = "delete", urlPatterns = {"/delete"}, loadOnStartup = 3)
 public class DeleteMentor extends HttpServlet {
-    private MentorDAO mentorDAO = new MentorJDBCDAO();
+    final MentorDAO mentorDAO = new MentorJDBCDAO();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-    }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -27,6 +24,7 @@ public class DeleteMentor extends HttpServlet {
         mentorDAO.removeUser(mentor);
         response.sendRedirect("list");
     }
+
 }
 
 
