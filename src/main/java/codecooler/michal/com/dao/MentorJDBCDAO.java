@@ -32,8 +32,6 @@ public class MentorJDBCDAO implements MentorDAO {
             pst.setString(3, mentor.getLastName());
             pst.setInt(4, mentor.getAge());
 
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
@@ -88,4 +86,28 @@ public class MentorJDBCDAO implements MentorDAO {
         }
     }
 
+    @Override
+    public void updateUser(int Id, String firstname, String lastname, String age) {
+        String sql = "UPDATE mentors "
+                + "SET firstname= ?, lastname= ?, age= ? "
+                + "WHERE ID = ?";
+        try (Connection con = dbConn.connect();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+
+            // set the corresponding param
+
+            pst.setString(1, firstname);
+            pst.setString(2, lastname);
+            pst.setString(3, age);
+            pst.setInt(4, Id);
+
+            pst.executeUpdate();
+
+            // update
+            pst.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
