@@ -1,7 +1,7 @@
-package codecooler.michal.com.servlet;
+package codecooler.michal.com.servlet.mentorservlet;
 
-import codecooler.michal.com.dao.MentorDAO;
-import codecooler.michal.com.dao.MentorJDBCDAO;
+import codecooler.michal.com.dao.interfacedao.MentorDAO;
+import codecooler.michal.com.dao.jdbc.MentorJDBCDAO;
 import codecooler.michal.com.model.Mentor;
 
 import javax.servlet.annotation.WebServlet;
@@ -14,15 +14,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "listmentors", urlPatterns = {"/list"}, loadOnStartup = 1)
-public class Mentors extends HttpServlet {
+@WebServlet(name = "listmentors", urlPatterns = {"/mentors"}, loadOnStartup = 1)
+public class MentorsServlet extends HttpServlet {
     final MentorDAO mentorDAO = new MentorJDBCDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
-        List<Mentor> listMentor = mentorDAO.listAllMentors();
-        request.setAttribute("listMentor", listMentor);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-mentor-view.jsp");
+        List<Mentor> listMentors = mentorDAO.listAllMentors();
+        request.setAttribute("listMentors", listMentors);
         dispatcher.forward(request, response);
     }
 }

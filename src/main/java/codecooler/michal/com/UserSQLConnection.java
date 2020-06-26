@@ -1,6 +1,6 @@
 package codecooler.michal.com;
 
-import codecooler.michal.com.dao.MentorDAO;
+import codecooler.michal.com.dao.interfacedao.MentorDAO;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,7 +1,7 @@
-package codecooler.michal.com.servlet;
+package codecooler.michal.com.servlet.mentorservlet;
 
-import codecooler.michal.com.dao.MentorDAO;
-import codecooler.michal.com.dao.MentorJDBCDAO;
+import codecooler.michal.com.dao.interfacedao.MentorDAO;
+import codecooler.michal.com.dao.jdbc.MentorJDBCDAO;
 import codecooler.michal.com.model.Mentor;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "add", urlPatterns = {"/add"}, loadOnStartup = 2)
+@WebServlet(name = "add", urlPatterns = {"/addMentor"}, loadOnStartup = 2)
 public class AddMentor extends HttpServlet {
     final MentorDAO mentorDAO = new MentorJDBCDAO();
 
@@ -25,13 +25,14 @@ public class AddMentor extends HttpServlet {
 
         Mentor mentor = new Mentor(id, firstName, lastName, age);
         mentorDAO.createMentor(mentor);
-        response.sendRedirect("list");
+        response.sendRedirect("mentors");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-mentor-view.jsp");
         dispatcher.forward(request, response);
     }
+
 }
 
 
