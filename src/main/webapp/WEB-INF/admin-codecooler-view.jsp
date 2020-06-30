@@ -27,20 +27,20 @@
   <div class="row">
     <div class="column">
       <div class="card">
-        <h2>Create quest item</h2>
+        <h2>Create codecooler item</h2>
 
 
-        <div id="quest" class="vis">
+        <div id="codecooler" class="vis">
           <div class="form">
-            <form action="/addQuest" method="post">
+            <form action="/addCodecooler" method="post">
                 <label>Id:</label><br>
                 <input value="" name="id"><br><br>
-                <label>Title:</label><br>
-                <input value="" name="title"><br><br>
-                <label>Description:</label><br>
-                <input value="" name="description"><br><br>
-                <label>Credit:</label><br>
-                <input value="" name="credit"><br><br>
+                <label>First name:</label><br>
+                <input value="" name="firstName"><br><br>
+                <label>Last name:</label><br>
+                <input value="" name="lastName"><br><br>
+                <label>Age:</label><br>
+                <input value="" name="age"><br><br>
                 <button class="button button2" type="submit">Send</button>
             </form>
           </div>
@@ -52,7 +52,7 @@
       <div class="card">
 
         <table border="1" cellpadding="5">
-          <caption><h2>List of quests</h2></caption>
+          <caption><h2>List of codecoolers</h2></caption>
           <tr>
               <th>ID</th>
               <th>Title</th>
@@ -60,15 +60,15 @@
               <th>Credit</th>
               <th>Action</th>
           </tr>
-          <c:forEach var="quest" items="${listQuests}">
+          <c:forEach var="codecooler" items="${listCodecoolers}">
               <tr>
-                  <td><c:out value="${quest.id}" /></td>
-                  <td><c:out value="${quest.title}" /></td>
-                  <td><c:out value="${quest.description}" /></td>
-                  <td><c:out value="${quest.credit}" /></td>
+                  <td><c:out value="${codecooler.id}" /></td>
+                  <td><c:out value="${codecooler.firstName}" /></td>
+                  <td><c:out value="${codecooler.lastName}" /></td>
+                  <td><c:out value="${codecooler.age}" /></td>
                   <td>
-                      <a href="/edit?id=<c:out value='${quest.id}' />">Edit</a>
-                      <a href="/deleteQuest?id=<c:out value='${quest.id}' />">Delete</a>
+                      <a href="/edit?id=<c:out value='${codecooler.id}' />">Edit</a>
+                      <a href="/deleteCodecooler?id=<c:out value='${codecooler.id}' />">Delete</a>
                   </td>
               </tr>
           </c:forEach>

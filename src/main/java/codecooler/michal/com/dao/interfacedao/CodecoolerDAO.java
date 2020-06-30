@@ -6,8 +6,8 @@ import codecooler.michal.com.model.Mentor;
 import java.util.List;
 
 public interface CodecoolerDAO {
-    void createCodecooler(Mentor mentor);
-    List<Mentor> listAllCodecoolers();
+    void createCodecooler(Codecooler codecooler);
+    List<Codecooler> listAllCodecoolers();
     void removeCodecooler(Codecooler codecooler);
     void editCodecooler(Codecooler codecooler);
 }

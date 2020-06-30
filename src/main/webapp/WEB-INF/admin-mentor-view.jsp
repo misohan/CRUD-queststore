@@ -17,7 +17,7 @@
   </div>
   <div class="topnav">
     <a class="active">Options</a>
-    <a href="../listCodecoolers">Codecoolers</a>
+    <a href="../codecoolers">Codecoolers</a>
     <a href="../mentors">Mentors</a>
     <a href="../artifacts">Artifacts</a>
     <a href="../quests">Quest</a>
@@ -67,8 +67,8 @@
                   <td><c:out value="${mentor.lastName}" /></td>
                   <td><c:out value="${mentor.age}" /></td>
                   <td>
-                      <a href="/edit?id=<c:out value='${mentor.id}' />">Edit</a>
-                      <a href="/delete?id=<c:out value='${mentor.id}' />">Delete artifact</a>
+                      <a href="/editMentor?id=<c:out value='${mentor.id}' />">Edit</a>
+                      <a href="/delete?id=<c:out value='${mentor.id}' />">Delete</a>
                   </td>
               </tr>
           </c:forEach>

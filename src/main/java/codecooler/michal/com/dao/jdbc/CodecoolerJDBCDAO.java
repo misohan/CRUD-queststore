@@ -1,8 +1,8 @@
 package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
-import codecooler.michal.com.dao.interfacedao.ArtifactDAO;
-import codecooler.michal.com.model.Artifact;
+import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
+import codecooler.michal.com.model.Codecooler;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,26 +11,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ArtifactJDBCDAO implements ArtifactDAO {
+public class CodecoolerJDBCDAO implements CodecoolerDAO {
     private final UserSQLConnection dbConn = new UserSQLConnection();
-    private UserSQLConnection connection;
-
-    public ArtifactJDBCDAO() {
-            this.connection = new UserSQLConnection();
-    }
 
     @Override
-    public void createArtifact(Artifact artifact) {
-        String sql = "INSERT INTO artifacts (id, title, description, credit) " +
+    public void createCodecooler(Codecooler codecooler) {
+        String sql = "INSERT INTO codecoolers (id, firstname, lastname, age) " +
                 "VALUES (?,?,?,?);";
 
         try (Connection con = dbConn.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
-            pst.setInt(1, artifact.getId());
-            pst.setString(2, artifact.getTitle());
-            pst.setString(3, artifact.getDescription());
-            pst.setInt(4, artifact.getCredit());
+            pst.setInt(1, codecooler.getId());
+            pst.setString(2, codecooler.getFirstName());
+            pst.setString(3, codecooler.getLastName());
+            pst.setInt(4, codecooler.getAge());
 
             System.out.println(sql);
 
@@ -39,14 +34,15 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
     @Override
-    public List<Artifact> listAllArtifacts() {
+    public List<Codecooler> listAllCodecoolers() {
         ResultSet resultSet = null;
-        List<Artifact> listArtifacts = new ArrayList<>();
+        List<Codecooler> listCodecooler = new ArrayList<>();
 
-        String sql = "SELECT * FROM artifacts";
+        String sql = "SELECT * FROM codecoolers";
 
         try (Connection con = dbConn.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -55,16 +51,16 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
 
             while (resultSet.next()) {
 
-                Artifact artifact = new Artifact();
+                Codecooler codecooler = new Codecooler();
 
-                artifact.setId(resultSet.getInt("id"));
-                artifact.setTitle(resultSet.getString("title"));
-                artifact.setDescription(resultSet.getString("description"));
-                artifact.setCredit(resultSet.getInt("credit"));
+                codecooler.setId(resultSet.getInt("id"));
+                codecooler.setFirstName(resultSet.getString("firstname"));
+                codecooler.setLastName(resultSet.getString("lastname"));
+                codecooler.setAge(resultSet.getInt("age"));
 
-                listArtifacts.add(artifact);
+                listCodecooler.add(codecooler);
             }
-            return listArtifacts;
+            return listCodecooler;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,20 +68,23 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         return null;
     }
 
-
     @Override
-    public void removeArtifact(Artifact artifact) {
-        String sql = "DELETE FROM artifacts WHERE id=?";
+    public void removeCodecooler(Codecooler codecooler) {
+        String sql = "DELETE FROM codecoolers WHERE id=?";
         try
                 (Connection con = dbConn.connect();
                  PreparedStatement pst = con.prepareStatement(sql)) {
 
-            pst.setInt(1, artifact.getId());
+            pst.setInt(1, codecooler.getId());
             pst.executeUpdate();
             System.out.println("Data deleted successfully");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-}
 
+    @Override
+    public void editCodecooler(Codecooler codecooler) {
+
+    }
+}

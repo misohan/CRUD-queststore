@@ -1,5 +1,6 @@
 package codecooler.michal.com;
 
+import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
 
 import java.io.BufferedReader;
@@ -27,7 +28,7 @@ public class UserSQLConnection {
 
             props.load(bf);
         } catch (IOException ex) {
-            Logger.getLogger(MentorDAO.class.getName()).log(
+            Logger.getLogger(CodecoolerDAO.class.getName()).log(
                     Level.SEVERE, null, ex);
         }
 
