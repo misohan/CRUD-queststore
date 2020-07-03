@@ -8,6 +8,7 @@ public interface MentorDAO {
     void createMentor(Mentor mentor);
     List<Mentor> listAllMentors();
     void removeUser(Mentor mentor);
-    void updateUser(int Id, String firstname, String lastname, String age);
+    void updateUser(Mentor mentor);
+    Mentor selectMentor (int id);
 
 }

@@ -20,9 +20,11 @@ public class Mentors extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
+        Mentor mentor = new Mentor("","");
         List<Mentor> listMentor = mentorDAO.listAllMentors();
         request.setAttribute("listMentor", listMentor);
+        request.setAttribute("mentorPut", mentor);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/index.jsp");
         dispatcher.forward(request, response);
     }
 }

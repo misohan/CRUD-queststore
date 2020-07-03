@@ -87,7 +87,7 @@ public class MentorJDBCDAO implements MentorDAO {
     }
 
     @Override
-    public void updateUser(int Id, String firstname, String lastname, String age) {
+    public void updateUser(Mentor mentor) {
         String sql = "UPDATE mentors "
                 + "SET firstname= ?, lastname= ?, age= ? "
                 + "WHERE ID = ?";
@@ -96,10 +96,10 @@ public class MentorJDBCDAO implements MentorDAO {
 
             // set the corresponding param
 
-            pst.setString(1, firstname);
-            pst.setString(2, lastname);
-            pst.setString(3, age);
-            pst.setInt(4, Id);
+            pst.setString(1, mentor.getFirstName());
+            pst.setString(2, mentor.getLastName());
+            pst.setInt(3, mentor.getAge());
+            pst.setInt(4, mentor.getId());
 
             pst.executeUpdate();
 
@@ -109,5 +109,28 @@ public class MentorJDBCDAO implements MentorDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Override
+    public Mentor selectMentor(int id) {
+        Mentor mentor = null;
+
+        String sql = "SELECT id, firstname, lastname, age FROM mentors WHERE id=?";
+        try (Connection con = dbConn.connect();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            pst.setInt(1, id);
+            // set the corresponding param
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()){
+                String firstname = rs.getString("firstname");
+                String lastname = rs.getString("lastname");
+                Integer age = rs.getInt("age");
+                mentor = new Mentor(id, firstname, lastname,age);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return mentor;
     }
 }

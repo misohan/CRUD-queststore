@@ -13,6 +13,11 @@ public class Mentor {
     public Mentor() {
     }
 
+    public Mentor(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public Mentor(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
