@@ -7,12 +7,9 @@ import codecooler.michal.com.model.Mentor;
 
 public class Main {
     public static void main(String[] args) {
+        MentorDAO mentorDAO = new MentorJDBCDAO();
 
-
-
-
-
-
+        mentorDAO.updateMentor(1, "Donal", "Pepeag", 27);
 
     }
 }
