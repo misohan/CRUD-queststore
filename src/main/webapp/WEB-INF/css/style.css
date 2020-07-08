@@ -12,6 +12,11 @@ body {
   color: #4c98cb;
 
 }
+
+table {
+  margin: 0 auto; /* or margin: 0 auto 0 auto */
+}
+
 h2{
   color: #4c98cb;
 }
@@ -147,6 +152,3 @@ h2{
 .custom-select:hover{
   background-color: #db4041;
 }
-
-
-

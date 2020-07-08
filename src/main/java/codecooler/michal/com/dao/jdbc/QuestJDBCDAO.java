@@ -1,7 +1,8 @@
-package codecooler.michal.com.dao;
+package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
-import codecooler.michal.com.model.Mentor;
+import codecooler.michal.com.dao.interfacedao.QuestDAO;
+import codecooler.michal.com.model.Quest;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,27 +11,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MentorJDBCDAO implements MentorDAO {
+public class QuestJDBCDAO implements QuestDAO {
     private final UserSQLConnection dbConn = new UserSQLConnection();
     private UserSQLConnection connection;
 
-    public MentorJDBCDAO() {
+    public QuestJDBCDAO() {
         this.connection = new UserSQLConnection();
     }
 
-    @Override
-    public void createMentor(Mentor mentor){
 
-        String sql = "INSERT INTO mentors (id, firstname, lastname, age) " +
+    @Override
+    public void createQuest(Quest quest) {
+        String sql = "INSERT INTO quests (id, title, description, credit) " +
                 "VALUES (?,?,?,?);";
 
         try (Connection con = dbConn.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
-            pst.setInt(1, mentor.getId());
-            pst.setString(2, mentor.getFirstName());
-            pst.setString(3, mentor.getLastName());
-            pst.setInt(4, mentor.getAge());
+            pst.setInt(1, quest.getId());
+            pst.setString(2, quest.getTitle());
+            pst.setString(3, quest.getDescription());
+            pst.setInt(4, quest.getCredit());
 
             System.out.println(sql);
 
@@ -41,11 +42,12 @@ public class MentorJDBCDAO implements MentorDAO {
         }
     }
 
-    public List<Mentor> listAllMentors() {
+    @Override
+    public List<Quest> listAllQuests() {
         ResultSet resultSet = null;
-        List<Mentor> listMentor = new ArrayList<>();
+        List<Quest> listQuests = new ArrayList<>();
 
-        String sql = "SELECT * FROM mentors";
+        String sql = "SELECT * FROM quests";
 
         try (Connection con = dbConn.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
@@ -54,16 +56,16 @@ public class MentorJDBCDAO implements MentorDAO {
 
             while (resultSet.next()) {
 
-                Mentor mentor = new Mentor();
+                Quest quest = new Quest();
 
-                mentor.setId(resultSet.getInt("id"));
-                mentor.setFirstName(resultSet.getString("firstname"));
-                mentor.setLastName(resultSet.getString("lastname"));
-                mentor.setAge(resultSet.getInt("age"));
+                quest.setId(resultSet.getInt("id"));
+                quest.setTitle(resultSet.getString("title"));
+                quest.setDescription(resultSet.getString("description"));
+                quest.setCredit(resultSet.getInt("credit"));
 
-                listMentor.add(mentor);
+                listQuests.add(quest);
             }
-            return listMentor;
+            return listQuests;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -72,20 +74,17 @@ public class MentorJDBCDAO implements MentorDAO {
     }
 
     @Override
-    public void removeUser(Mentor mentor) {
-
-        String sql = "DELETE FROM mentors WHERE id=?";
-
+    public void removeQuest(Quest quest) {
+        String sql = "DELETE FROM quests WHERE id=?";
         try
                 (Connection con = dbConn.connect();
-                 PreparedStatement ptmt = con.prepareStatement(sql)) {
+                 PreparedStatement pst = con.prepareStatement(sql)) {
 
-            ptmt.setInt(1, mentor.getId());
-            ptmt.executeUpdate();
+            pst.setInt(1, quest.getId());
+            pst.executeUpdate();
             System.out.println("Data deleted successfully");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-
 }
