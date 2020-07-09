@@ -4,6 +4,7 @@ import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
 import codecooler.michal.com.model.Quest;
 
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,7 +16,7 @@ public class QuestJDBCDAO implements QuestDAO {
     private final UserSQLConnection dbConn = new UserSQLConnection();
     private UserSQLConnection connection;
 
-    public QuestJDBCDAO() {
+    public QuestJDBCDAO()    {
         this.connection = new UserSQLConnection();
     }
 

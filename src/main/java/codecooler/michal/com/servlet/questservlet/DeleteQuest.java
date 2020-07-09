@@ -1,10 +1,7 @@
 package codecooler.michal.com.servlet.questservlet;
 
-import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
-import codecooler.michal.com.dao.jdbc.CodecoolerJDBCDAO;
 import codecooler.michal.com.dao.jdbc.QuestJDBCDAO;
-import codecooler.michal.com.model.Codecooler;
 import codecooler.michal.com.model.Quest;
 
 import javax.servlet.ServletException;

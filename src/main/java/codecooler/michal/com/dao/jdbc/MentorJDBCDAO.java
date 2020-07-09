@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MentorJDBCDAO implements MentorDAO {
-    private final UserSQLConnection dbConn = new UserSQLConnection();
-    private UserSQLConnection connection;
+    private final UserSQLConnection connection = new UserSQLConnection();
+    private UserSQLConnection dbcoonection;
 
-    public MentorJDBCDAO() {
-        this.connection = new UserSQLConnection();
+    public MentorJDBCDAO(UserSQLConnection dbcoonection) {
+        this.dbcoonection = dbcoonection;
     }
 
     @Override
@@ -24,21 +24,20 @@ public class MentorJDBCDAO implements MentorDAO {
         String sql = "INSERT INTO mentors (id, firstname, lastname, age) " +
                 "VALUES (?,?,?,?);";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, mentor.getId());
             pst.setString(2, mentor.getFirstName());
             pst.setString(3, mentor.getLastName());
             pst.setInt(4, mentor.getAge());
-
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
+
     }
 
     @Override
@@ -47,7 +46,7 @@ public class MentorJDBCDAO implements MentorDAO {
                 + "SET firstname= ?, lastName= ?, age= ?"
                 + "WHERE ID = ?";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setString(1, firstName);
@@ -71,7 +70,7 @@ public class MentorJDBCDAO implements MentorDAO {
 
         String sql = "SELECT * FROM mentors";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             resultSet = pst.executeQuery();
@@ -99,7 +98,7 @@ public class MentorJDBCDAO implements MentorDAO {
     public void removeMentor(Mentor mentor) {
         String sql = "DELETE FROM mentors WHERE id=?";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, mentor.getId());
@@ -117,7 +116,7 @@ public class MentorJDBCDAO implements MentorDAO {
 
         String sql = "SELECT * FROM mentors";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             resultSet = pst.executeQuery();

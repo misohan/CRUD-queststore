@@ -1,5 +1,6 @@
 package codecooler.michal.com.servlet.mentorservlet;
 
+import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
 import codecooler.michal.com.dao.jdbc.MentorJDBCDAO;
 import codecooler.michal.com.model.Mentor;
@@ -14,7 +15,9 @@ import java.io.IOException;
 
 @WebServlet(name = "add", urlPatterns = {"/addMentor"}, loadOnStartup = 2)
 public class AddMentor extends HttpServlet {
-    final MentorDAO mentorDAO = new MentorJDBCDAO();
+    private UserSQLConnection connection;
+
+    final MentorDAO mentorDAO = new MentorJDBCDAO(connection);
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
