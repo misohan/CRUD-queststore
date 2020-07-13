@@ -1,6 +1,7 @@
 package codecooler.michal.com;
 
-import codecooler.michal.com.dao.MentorDAO;
+import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
+import codecooler.michal.com.dao.interfacedao.MentorDAO;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,13 +22,15 @@ public class UserSQLConnection {
         Properties props = new Properties();
         Path myPath = Paths.get("src/main/resources/database.properties");
 
+
         try {
             BufferedReader bf = Files.newBufferedReader(myPath,
                     StandardCharsets.UTF_8);
 
             props.load(bf);
+
         } catch (IOException ex) {
-            Logger.getLogger(MentorDAO.class.getName()).log(
+            Logger.getLogger(CodecoolerDAO.class.getName()).log(
                     Level.SEVERE, null, ex);
         }
 
