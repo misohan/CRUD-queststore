@@ -13,15 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "listartifacts", urlPatterns = {"/artifacts"}, loadOnStartup = 1)
-public class Artifacts extends HttpServlet {
-    final ArtifactDAO artifactDAO = new ArtifactJDBCDAO();
+@WebServlet(name = "listartifacts", urlPatterns = {"/ccartifacts"}, loadOnStartup = 2)
+public class ArtifactServlet extends HttpServlet {
+    final ArtifactDAO artifactDAO = new ArtifactJDBCDAO() {
+    };
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-artifact-view.jsp");
-        List<Artifact> listArtifacts = artifactDAO.listAllArtifacts();
-        request.setAttribute("listArtifacts", listArtifacts);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/codecooler-artifact-view");
+        List<Artifact> listAllArtifacts = artifactDAO.listAllArtifacts();
+        request.setAttribute("listArtifacts", listAllArtifacts);
         dispatcher.forward(request, response);
     }
 }
