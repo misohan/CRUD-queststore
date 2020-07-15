@@ -1,9 +1,8 @@
-package codecooler.michal.com.servlet.mentorservlet;
+package codecooler.michal.com.servlet.adminservlet.codecoolerservlet;
 
-import codecooler.michal.com.UserSQLConnection;
-import codecooler.michal.com.dao.interfacedao.MentorDAO;
-import codecooler.michal.com.dao.jdbc.MentorJDBCDAO;
-import codecooler.michal.com.model.Mentor;
+import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
+import codecooler.michal.com.dao.jdbc.CodecoolerJDBCDAO;
+import codecooler.michal.com.model.Codecooler;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "add", urlPatterns = {"/addMentor"}, loadOnStartup = 2)
-public class AddMentor extends HttpServlet {
-    private UserSQLConnection connection;
-
-    final MentorDAO mentorDAO = new MentorJDBCDAO(connection);
+@WebServlet(name = "addCodecooler", urlPatterns = {"/addCodecooler"}, loadOnStartup = 6)
+public class AddCodecooler extends HttpServlet {
+    final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
@@ -26,13 +23,13 @@ public class AddMentor extends HttpServlet {
         String lastName = request.getParameter("lastName");
         int age = Integer.parseInt(request.getParameter("age"));
 
-        Mentor mentor = new Mentor(id, firstName, lastName, age);
-        mentorDAO.createMentor(mentor);
-        response.sendRedirect("mentors");
+        Codecooler codecooler = new Codecooler(id, firstName, lastName, age);
+        codecoolerDAO.createCodecooler(codecooler);
+        response.sendRedirect("codecoolers");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-mentor-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-codecooler-view.jsp");
         dispatcher.forward(request, response);
     }
 

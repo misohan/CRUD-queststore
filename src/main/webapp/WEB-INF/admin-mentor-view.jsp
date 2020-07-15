@@ -21,6 +21,8 @@
     <a href="../mentors">Mentors</a>
     <a href="../artifacts">Artifacts</a>
     <a href="../quests">Quest</a>
+    <a href="../w">Wallet</a>
+
     <a href="../loginPage/loginPage.html">Login page</a>
   </div>
 

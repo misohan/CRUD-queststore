@@ -1,4 +1,4 @@
-package codecooler.michal.com.servlet.mentorservlet;
+package codecooler.michal.com.servlet.adminservlet.mentorservlet;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "listmentors", urlPatterns = {"/mentors"}, loadOnStartup = 1)
-public class MentorsServlet extends HttpServlet {
-    private UserSQLConnection connection;
+public class AdminViewMentor extends HttpServlet {
+    private UserSQLConnection connection = new UserSQLConnection();
 
     final MentorDAO mentorDAO = new MentorJDBCDAO(connection);
 

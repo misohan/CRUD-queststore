@@ -1,4 +1,4 @@
-package codecooler.michal.com.servlet.artifactservlet;
+package codecooler.michal.com.servlet.adminservlet.artifactservlet;
 
 import codecooler.michal.com.dao.interfacedao.ArtifactDAO;
 import codecooler.michal.com.dao.jdbc.ArtifactJDBCDAO;

@@ -9,6 +9,12 @@ import codecooler.michal.com.model.Mentor;
 public class Main {
     public static void main(String[] args) {
 
+        Mentor mentor = new Mentor("M","L", 15);
+
+        MentorDAO mentorDAO = new MentorJDBCDAO(new UserSQLConnection());
+
+        mentorDAO.createMentor(mentor);
+
 
 
 

@@ -1,4 +1,4 @@
-package codecooler.michal.com.servlet.questservlet;
+package codecooler.michal.com.servlet.adminservlet.questservlet;
 
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
 import codecooler.michal.com.dao.jdbc.QuestJDBCDAO;

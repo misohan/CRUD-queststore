@@ -1,4 +1,4 @@
-package codecooler.michal.com.servlet.mentorservlet;
+package codecooler.michal.com.servlet.adminservlet.mentorservlet;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "delete", urlPatterns = {"/delete"}, loadOnStartup = 3)
 public class DeleteMentor extends HttpServlet {
-    private UserSQLConnection connection;
+    private UserSQLConnection connection = new UserSQLConnection();
 
     final MentorDAO mentorDAO = new MentorJDBCDAO(connection);
 

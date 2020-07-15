@@ -2,6 +2,7 @@ package codecooler.michal.com;
 
 import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
+import codecooler.michal.com.exception.DatabaseException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,7 +48,7 @@ public class UserSQLConnection {
         try {
             conn = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
         return conn;
     }

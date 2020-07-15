@@ -2,6 +2,7 @@ package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.MentorDAO;
+import codecooler.michal.com.exception.DatabaseException;
 import codecooler.michal.com.model.Mentor;
 
 import java.sql.Connection;
@@ -12,36 +13,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MentorJDBCDAO implements MentorDAO {
-    private final UserSQLConnection connection = new UserSQLConnection();
-    private UserSQLConnection dbcoonection;
+    private UserSQLConnection connection;
 
-    public MentorJDBCDAO(UserSQLConnection dbcoonection) {
-        this.dbcoonection = dbcoonection;
+    public MentorJDBCDAO(UserSQLConnection connection) {
+        this.connection = connection;
     }
 
     @Override
-    public void createMentor(Mentor mentor){
-        String sql = "INSERT INTO mentors (id, firstname, lastname, age) " +
-                "VALUES (?,?,?,?);";
+    public Mentor createMentor(Mentor mentor){
+        String sql = "INSERT INTO mentors (firstname, lastname, age) " +
+                "VALUES (?,?,?);";
 
         try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
-            pst.setInt(1, mentor.getId());
-            pst.setString(2, mentor.getFirstName());
-            pst.setString(3, mentor.getLastName());
-            pst.setInt(4, mentor.getAge());
+            pst.setString(1, mentor.getFirstName());
+            pst.setString(2, mentor.getLastName());
+            pst.setInt(3, mentor.getAge());
             pst.executeUpdate();
 
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
 
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
+        }
+        return mentor;
 
     }
 
     @Override
-    public void updateMentor(int id, String firstName, String lastName, int age) {
+    public boolean updateMentor(int id, String firstName, String lastName, int age) {
         String sql = "UPDATE mentors "
                 + "SET firstname= ?, lastName= ?, age= ?"
                 + "WHERE ID = ?";
@@ -58,8 +58,9 @@ public class MentorJDBCDAO implements MentorDAO {
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
+        return true;
     }
 
 
@@ -86,12 +87,11 @@ public class MentorJDBCDAO implements MentorDAO {
 
                 listMentor.add(mentor);
             }
-            return listMentor;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
         }
-        return null;
+        return listMentor;
     }
 
     @Override
