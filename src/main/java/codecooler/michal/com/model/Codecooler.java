@@ -7,6 +7,7 @@ public class Codecooler {
     private int age;
     private CodecoolClass codecolClass;
 
+
     public Codecooler() {
     }
 
@@ -19,6 +20,7 @@ public class Codecooler {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+
     }
 
     public int getId() {
