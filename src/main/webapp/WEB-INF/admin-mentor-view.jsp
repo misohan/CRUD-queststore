@@ -13,7 +13,7 @@
 <body>
   <div class="header">
     <h1>Admin menu</h1>
-    <p>Your personal dashboard</p>
+    <p>"${quote.quoteText}"</p>
   </div>
   <div class="topnav">
     <a class="active">Options</a>
@@ -82,7 +82,7 @@
   <script src="admin.js"></script>
 
   <div class="footer">
-    <h2>Footer</h2>
+    <td>"${quote.quoteText}"</td>
   </div>
 </body>
 

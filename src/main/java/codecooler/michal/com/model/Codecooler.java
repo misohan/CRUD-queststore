@@ -5,20 +5,26 @@ public class Codecooler {
     private String firstName;
     private String lastName;
     private int age;
+    private String email;
     private CodecoolClass codecolClass;
 
     public Codecooler() {
+    }
+
+    public Codecooler(String email) {
+        this.email = email;
     }
 
     public Codecooler(int id) {
         this.id = id;
     }
 
-    public Codecooler(int id, String firstName, String lastName, int age) {
+    public Codecooler(int id, String firstName, String lastName, int age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.email = email;
     }
 
     public int getId() {
@@ -51,5 +57,12 @@ public class Codecooler {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

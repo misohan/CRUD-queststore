@@ -133,8 +133,7 @@ public class MentorJDBCDAO implements MentorDAO {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        return null;
+        }        return null;
 
     }
 

@@ -1,5 +1,6 @@
 package codecooler.michal.com.dao.interfacedao;
 
+import codecooler.michal.com.model.Artifact;
 import codecooler.michal.com.model.Codecooler;
 import codecooler.michal.com.model.Mentor;
 
@@ -10,4 +11,8 @@ public interface CodecoolerDAO {
     List<Codecooler> listAllCodecoolers();
     void removeCodecooler(Codecooler codecooler);
     void editCodecooler(Codecooler codecooler);
+    Codecooler getCodecoolerByEmail(String email);
+    boolean checkIfCodecoolerExists(String email);
+    List<Artifact> listCodecoolersArtifacts(String email);
+    List<Artifact> getArtifacts(String email);
 }

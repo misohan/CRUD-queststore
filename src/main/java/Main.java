@@ -1,19 +1,18 @@
 import codecooler.michal.com.UserSQLConnection;
-import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
-import codecooler.michal.com.dao.interfacedao.MentorDAO;
-import codecooler.michal.com.dao.jdbc.CodecoolerJDBCDAO;
-import codecooler.michal.com.dao.jdbc.MentorJDBCDAO;
+import codecooler.michal.com.dao.interfacedao.*;
+import codecooler.michal.com.dao.jdbc.*;
 import codecooler.michal.com.model.Codecooler;
 import codecooler.michal.com.model.Mentor;
+import codecooler.michal.com.model.Quote;
 
 public class Main {
     public static void main(String[] args) {
 
-        Mentor mentor = new Mentor("M","L", 15);
+        UserSQLConnection connection = new UserSQLConnection();
 
-        MentorDAO mentorDAO = new MentorJDBCDAO(new UserSQLConnection());
+        CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
 
-        mentorDAO.createMentor(mentor);
+        System.out.println(codecoolerDAO.listCodecoolersArtifacts("a@a.com").get(0).getCredit());
 
 
 

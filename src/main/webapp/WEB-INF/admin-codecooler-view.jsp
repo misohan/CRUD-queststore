@@ -41,6 +41,8 @@
                 <input value="" name="lastName"><br><br>
                 <label>Age:</label><br>
                 <input value="" name="age"><br><br>
+                <label>Email:</label><br>
+                <input value="" name="email"><br><br>
                 <button class="button button2" type="submit">Send</button>
             </form>
           </div>
@@ -66,6 +68,7 @@
                   <td><c:out value="${codecooler.firstName}" /></td>
                   <td><c:out value="${codecooler.lastName}" /></td>
                   <td><c:out value="${codecooler.age}" /></td>
+                  <td><c:out value="${codecooler.email}" /></td>
                   <td>
                       <a href="/edit?id=<c:out value='${codecooler.id}' />">Edit</a>
                       <a href="/deleteCodecooler?id=<c:out value='${codecooler.id}' />">Delete</a>

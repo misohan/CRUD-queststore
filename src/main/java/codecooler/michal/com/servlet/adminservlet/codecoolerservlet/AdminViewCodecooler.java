@@ -1,5 +1,6 @@
 package codecooler.michal.com.servlet.adminservlet.codecoolerservlet;
 
+import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
 import codecooler.michal.com.dao.jdbc.CodecoolerJDBCDAO;
 import codecooler.michal.com.model.Codecooler;
@@ -15,12 +16,14 @@ import java.util.List;
 
 @WebServlet(name = "listCodecoolers", urlPatterns = {"/codecoolers"}, loadOnStartup = 5)
 public class AdminViewCodecooler extends HttpServlet {
-    final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO();
+    private UserSQLConnection connection = new UserSQLConnection();
+
+    final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-codecooler-view.jsp");
-        List<codecooler.michal.com.model.Codecooler> listCodecoolers = codecoolerDAO.listAllCodecoolers();
+        List<Codecooler> listCodecoolers = codecoolerDAO.listAllCodecoolers();
 
         request.setAttribute("listCodecoolers", listCodecoolers);
         dispatcher.forward(request, response);

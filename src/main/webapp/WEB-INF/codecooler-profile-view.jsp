@@ -14,7 +14,7 @@
 <body>
   <div class="header">
     <h1>Codecooler menu</h1>
-    <p>Welcome, here are your options</p>
+    <p>"${codecooler.email}"</p>
   </div>
   <div class="topnav">
     <a class="active">Options</a>
