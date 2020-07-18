@@ -26,12 +26,12 @@
   <div class="row">
     <div class="column">
       <div class="card">
-        <h2>Create Artifact item</h2>
+        <h2>Create quest item</h2>
 
 
-        <div id="artifact" class="vis">
+        <div id="quest" class="vis">
           <div class="form">
-            <form action="/addMentorArtifact" method="post">
+            <form action="/addMentorQuest" method="post">
                 <label>Id:</label><br>
                 <input value="" name="id"><br><br>
                 <label>Title:</label><br>
@@ -51,7 +51,7 @@
       <div class="card">
 
         <table border="1" cellpadding="5">
-          <caption><h2>List of Artifacts</h2></caption>
+          <caption><h2>List of quests</h2></caption>
           <tr>
               <th>ID</th>
               <th>Title</th>
@@ -59,15 +59,15 @@
               <th>Credit</th>
               <th>Action</th>
           </tr>
-          <c:forEach var="artifact" items="${listArtifacts}">
+          <c:forEach var="quest" items="${listQuests}">
               <tr>
-                  <td><c:out value="${artifact.id}" /></td>
-                  <td><c:out value="${artifact.title}" /></td>
-                  <td><c:out value="${artifact.description}" /></td>
-                  <td><c:out value="${artifact.credit}" /></td>
+                  <td><c:out value="${quest.id}" /></td>
+                  <td><c:out value="${quest.title}" /></td>
+                  <td><c:out value="${quest.description}" /></td>
+                  <td><c:out value="${quest.credit}" /></td>
                   <td>
-                      <a href="/edit?id=<c:out value='${artifact.id}' />">Edit</a>
-                      <a href="/deleteMentorArtifact?id=<c:out value='${artifact.id}' />">Delete</a>
+                      <a href="/edit?id=<c:out value='${quest.id}' />">Edit</a>
+                      <a href="/deleteMentorQuest?id=<c:out value='${quest.id}' />">Delete</a>
                   </td>
               </tr>
           </c:forEach>

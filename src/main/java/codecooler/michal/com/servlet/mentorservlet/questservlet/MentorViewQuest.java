@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "listQuests", urlPatterns = {"/quests"}, loadOnStartup = 1)
-public class AdminViewQuest extends HttpServlet {
+@WebServlet(name = "mentorQuests", urlPatterns = {"/mentorQuests"}, loadOnStartup = 1)
+public class MentorViewQuest extends HttpServlet {
     final QuestDAO QuestDAO = new QuestJDBCDAO();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-quest-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/mentor-quest-view.jsp");
         List<Quest> listQuests = QuestDAO.listAllQuests();
 
         request.setAttribute("listQuests", listQuests);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deleteQuest", urlPatterns = {"/deleteQuest"}, loadOnStartup = 3)
+@WebServlet(name = "deleteMentorQuest", urlPatterns = {"/deleteMentorQuest"}, loadOnStartup = 3)
 public class DeleteQuest extends HttpServlet {
     final QuestDAO questDAO = new QuestJDBCDAO();
 
@@ -21,7 +21,7 @@ public class DeleteQuest extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Quest quest = new Quest(id);
         questDAO.removeQuest(quest);
-        response.sendRedirect("quests");
+        response.sendRedirect("mentorQuests");
 
     }
 }
