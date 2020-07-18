@@ -32,16 +32,18 @@ public class LoginController extends HttpServlet {
         Codecooler codecooler = null;
         HttpSession session = request.getSession();
         if(userDAO.checkIfUserExist(email,password)) {
-            if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("n")){
+            if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("codecooler")){
                 Codecooler loginUser = new Codecooler(email);
                 userEmail = loginUser.getEmail();
 
                 codecooler = codecoolerDAO.getCodecoolerByEmail(email);
                 session.setAttribute("codecooler",codecooler);
                 response.sendRedirect("/ccprofile");
-            } else{
+            } else if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("admin")){
                 response.sendRedirect("/mentors");
-
+            }
+            else if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("mentor")) {
+                response.sendRedirect("/mentorCodecoolerView");
             }
 
         }else{
