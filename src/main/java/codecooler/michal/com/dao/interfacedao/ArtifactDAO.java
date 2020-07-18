@@ -11,4 +11,5 @@ public interface ArtifactDAO {
     List<Artifact> listAllArtifacts();
     void removeArtifact(Artifact artifact);
     List<Artifact> listCodecoolersArtifacts(int id);
+    Artifact getArtifactById(int id);
 }

@@ -22,7 +22,7 @@
     <a href="../mentors">Mentors</a>
     <a href="../artifacts">Artifacts</a>
     <a href="../quests">Quest</a>
-    <a href="../loginPage/loginPage.html">Login page</a>
+    <a href="../login">Login page</a>
   </div>
 
   <div class="row">

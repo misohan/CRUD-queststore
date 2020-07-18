@@ -14,5 +14,5 @@ public interface CodecoolerDAO {
     Codecooler getCodecoolerByEmail(String email);
     boolean checkIfCodecoolerExists(String email);
     List<Artifact> listCodecoolersArtifacts(String email);
-    List<Artifact> getArtifacts(String email);
+    void addArtifactByCodecooler(String email, int id, String title, String description, int credit);
 }

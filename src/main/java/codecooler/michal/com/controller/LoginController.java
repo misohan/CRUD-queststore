@@ -24,7 +24,6 @@ public class LoginController extends HttpServlet {
     private CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
     public static String userEmail;
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
@@ -33,14 +32,18 @@ public class LoginController extends HttpServlet {
         Codecooler codecooler = null;
         HttpSession session = request.getSession();
         if(userDAO.checkIfUserExist(email,password)) {
+            if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("n")){
+                Codecooler loginUser = new Codecooler(email);
+                userEmail = loginUser.getEmail();
 
-            Codecooler codecooler1 = new Codecooler(1, "M", "B", 50, email);
+                codecooler = codecoolerDAO.getCodecoolerByEmail(email);
+                session.setAttribute("codecooler",codecooler);
+                response.sendRedirect("/ccprofile");
+            } else{
+                response.sendRedirect("/mentors");
 
-            userEmail = codecooler1.getEmail();
+            }
 
-            codecooler = codecoolerDAO.getCodecoolerByEmail(email);
-            session.setAttribute("codecooler",codecooler);
-            response.sendRedirect("/ccprofile");
         }else{
             request.setAttribute("message","Wrong credential");
             response.sendRedirect("/login");

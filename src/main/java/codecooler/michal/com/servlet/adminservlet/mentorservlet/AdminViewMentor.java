@@ -41,7 +41,7 @@ public class AdminViewMentor extends HttpServlet {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        User user = userDAO.getByEmailAndPassword(email, password);
+        User user = userDAO.getUserByEmailAndPassword(email, password);
 
         request.setAttribute("user", user);
 

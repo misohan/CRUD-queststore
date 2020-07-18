@@ -3,6 +3,7 @@ package codecooler.michal.com.dao.jdbc;
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.ArtifactDAO;
 import codecooler.michal.com.model.Artifact;
+import codecooler.michal.com.model.Quote;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -113,6 +114,33 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
                 listArtifacts.add(artifact);
             }
             return listArtifacts;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Artifact getArtifactById(int id) {
+        ResultSet resultSet = null;
+        Artifact artifact = new Artifact();
+
+        String sql = "SELECT * FROM artifacts WHERE id = " + id;
+
+        try (Connection con = connection.connect();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+
+            resultSet = pst.executeQuery();
+
+            while (resultSet.next()) {
+
+                artifact.setId(resultSet.getInt("id"));
+                artifact.setTitle(resultSet.getString("title"));
+                artifact.setDescription(resultSet.getString("description"));
+                artifact.setCredit(resultSet.getInt("credit"));
+            }
+            return artifact;
 
         } catch (SQLException e) {
             e.printStackTrace();

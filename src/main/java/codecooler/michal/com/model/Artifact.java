@@ -1,6 +1,7 @@
 package codecooler.michal.com.model;
 
 public class Artifact {
+    private String email;
     private int id;
     private String title;
     private String description;
@@ -18,6 +19,20 @@ public class Artifact {
         this.title = title;
         this.description = description;
         this.credit = credit;
+    }
+
+    public Artifact(String artifactEmail, int id, String title, String description, int credit) {
+    }
+
+    public Artifact(String a, int i) {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getId() {

@@ -30,11 +30,6 @@
                         <br><br>
                         <label for="password">Password:</label>
                         <input type="password" name="password" size="30"/>
-                        <br><br>
-
-                        <label for="id">Id:</label>
-                        <input type="id" name="id" size="30"/>
-
                         <%
                             String message = null;
                             if(message==null){

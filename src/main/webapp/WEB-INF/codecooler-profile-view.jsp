@@ -20,7 +20,7 @@
     <a class="active">Options</a>
     <a href="../ccprofile">My profile</a>
     <a href="../artifactshop">Artifact shop</a>
-    <a href="../loginPage/loginPage.html">Login page</a>
+    <a href="../login">Login page</a>
   </div>
 
   <div class="row">

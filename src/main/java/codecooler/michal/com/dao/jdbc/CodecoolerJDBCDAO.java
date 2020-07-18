@@ -174,37 +174,31 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
         }
         return null;
     }
-    public List<Artifact> getArtifacts(String email) {
-        List<Artifact> listArtifacts = new ArrayList<>();
 
-        try
-                (Connection con = connection.connect();
-                 PreparedStatement pst = con.prepareStatement("select * from ccartifacts where email = ?");
-                ) {
+    @Override
+    public void addArtifactByCodecooler(String email, int id, String title, String description, int credit) {
+        String sql = "INSERT INTO ccartifacts (email, id, title, description, credit) " +
+                "VALUES (?,?,?,?,?);";
+
+
+        try (Connection con = connection.connect();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+
             pst.setString(1, email);
-            ResultSet rs = pst.executeQuery();
+            pst.setInt(2, id);
+            pst.setString(3, title);
+            pst.setString(4, description);
+            pst.setInt(5, credit);
 
-            if (rs.next()) {
+            System.out.println(sql);
 
-                String userEmail = rs.getString(1);
+            pst.executeUpdate();
 
-                Artifact artifact = new Artifact();
-
-                artifact.setId(rs.getInt("id"));
-                artifact.setTitle(rs.getString("title"));
-                artifact.setDescription(rs.getString("description"));
-                artifact.setCredit(rs.getInt("credit"));
-
-                listArtifacts.add(artifact);
-
-                return listArtifacts;
-            }
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(UserJDBCDAO.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
-        return null;
+
     }
+
 
 }

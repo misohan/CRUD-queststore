@@ -17,7 +17,7 @@ public class UserJDBCDAO implements UserDAO {
     }
 
     @Override
-    public User getByEmailAndPassword(String email, String password) {
+    public User getUserByEmailAndPassword(String email, String password) {
         try
                 (Connection con = connection.connect();
                  PreparedStatement pst = con.prepareStatement("select * from users where email = ? and password = ?");
@@ -61,4 +61,6 @@ public class UserJDBCDAO implements UserDAO {
         }
         return false;
     }
+
+
 }
