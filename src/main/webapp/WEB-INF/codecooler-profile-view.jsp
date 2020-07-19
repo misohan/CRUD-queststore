@@ -69,14 +69,17 @@
     </div>
     <div class="column">
       <div class="card">
-        <h2>Wallet</h2>
-          <select name="options" id="options">
-          <option value="text">Account Balance</option>
-          <option value="text">Buy Credit</option>
-          <option value="text">Buy Team Credit</option>
-          </select>
-
-          <p>You have 5000 cc to spend</p>
+        <table border="1" cellpadding="5">
+              <caption><h2>Wallet</h2></caption>
+              <tr>
+                  <th>Email</th>
+                  <th>Account Balance</th>
+              </tr>
+                  <tr>
+                      <td><c:out value="${wallet.email}" /></td>
+                      <td><c:out value="${wallet.accountBalance}" /></td>
+                  </tr>
+          </table>
       </div>
     </div>
 

@@ -15,9 +15,11 @@ public class Main {
 
         ArtifactDAO artifactDAO = new ArtifactJDBCDAO();
 
+        WalletDAO walletDAO = new WalletJDBCDAO(connection);
 
 
-        System.out.println(artifactDAO.getArtifactById(1).getCredit());;
+
+        System.out.println(walletDAO.getWalletByEmail("a@a.com").getAccountBalance());
 
 
 

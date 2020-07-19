@@ -19,6 +19,8 @@ body {
 
 table {
   margin: 0 auto; /* or margin: 0 auto 0 auto */
+  height:100px;
+  overflow:auto
 }
 
 h2{
@@ -105,6 +107,7 @@ h2{
   text-align: center;
   background-color: #f1f1f1;
   height: 600px;
+  overflow:auto
 }
 .form{
   padding: 10px;

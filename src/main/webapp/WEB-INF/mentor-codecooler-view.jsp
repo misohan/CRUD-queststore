@@ -53,29 +53,29 @@
       <div class="card">
 
         <table border="1" cellpadding="5">
-          <caption><h2>List of codecoolers</h2></caption>
-          <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Credit</th>
-              <th>Action</th>
-          </tr>
-          <c:forEach var="codecooler" items="${listCodecoolers}">
-              <tr>
-                  <td><c:out value="${codecooler.id}" /></td>
-                  <td><c:out value="${codecooler.firstName}" /></td>
-                  <td><c:out value="${codecooler.lastName}" /></td>
-                  <td><c:out value="${codecooler.age}" /></td>
-                  <td><c:out value="${codecooler.email}" /></td>
-                  <td>
-                      <a href="/edit?id=<c:out value='${codecooler.id}' />">Edit</a>
-                      <a href="/deleteCodecoolerMentorViewCodecooler?id=<c:out value='${codecooler.id}' />">Delete</a>
-                  </td>
-              </tr>
-          </c:forEach>
-      </table>
-
+                  <caption><h2>List of codecoolers</h2></caption>
+                  <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Credit</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                  </tr>
+                  <c:forEach var="codecooler" items="${listCodecoolers}">
+                      <tr>
+                          <td><c:out value="${codecooler.id}" /></td>
+                          <td><c:out value="${codecooler.firstName}" /></td>
+                          <td><c:out value="${codecooler.lastName}" /></td>
+                          <td><c:out value="${codecooler.age}" /></td>
+                          <td><c:out value="${codecooler.email}" /></td>
+                          <td>
+                              <a href="/edit?id=<c:out value='${codecooler.id}' />">Edit</a>
+                              <a href="/deleteCodecoolerMentorViewCodecooler?id=<c:out value='${codecooler.id}' />">Delete</a>
+                          </td>
+                      </tr>
+                  </c:forEach>
+              </table>
       </div>
     </div>
   </div>
@@ -88,3 +88,4 @@
 
 
 </html>
+

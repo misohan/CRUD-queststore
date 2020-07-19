@@ -6,7 +6,6 @@ import codecooler.michal.com.dao.interfacedao.UserDAO;
 import codecooler.michal.com.dao.jdbc.CodecoolerJDBCDAO;
 import codecooler.michal.com.dao.jdbc.UserJDBCDAO;
 import codecooler.michal.com.model.Codecooler;
-import codecooler.michal.com.model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

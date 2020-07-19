@@ -103,7 +103,7 @@ public class MentorJDBCDAO implements MentorDAO {
 
             pst.setInt(1, mentor.getId());
             pst.executeUpdate();
-            System.out.println("Data deleted successfully");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

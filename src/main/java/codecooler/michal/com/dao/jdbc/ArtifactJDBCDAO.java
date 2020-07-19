@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArtifactJDBCDAO implements ArtifactDAO {
-    private final UserSQLConnection dbConn = new UserSQLConnection();
     private UserSQLConnection connection;
 
     public ArtifactJDBCDAO() {
@@ -25,7 +24,7 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         String sql = "INSERT INTO artifacts (id, title, description, credit) " +
                 "VALUES (?,?,?,?);";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, artifact.getId());
@@ -49,7 +48,7 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
 
         String sql = "SELECT * FROM artifacts";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             resultSet = pst.executeQuery();
@@ -78,7 +77,7 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
     public void removeArtifact(Artifact artifact) {
         String sql = "DELETE FROM artifacts WHERE id=?";
         try
-                (Connection con = dbConn.connect();
+                (Connection con = connection.connect();
                  PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, artifact.getId());
@@ -96,7 +95,7 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
 
         String sql = "SELECT * FROM ccartifacts WHERE id = ?";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1,id);

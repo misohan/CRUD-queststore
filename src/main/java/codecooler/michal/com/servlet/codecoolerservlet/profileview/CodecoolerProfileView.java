@@ -1,4 +1,4 @@
-package codecooler.michal.com.servlet.codecoolerservlet;
+package codecooler.michal.com.servlet.codecoolerservlet.profileview;
 
 
 import codecooler.michal.com.UserSQLConnection;
@@ -23,6 +23,7 @@ public class CodecoolerProfileView extends HttpServlet {
 
     final QuestDAO QuestDAO = new QuestJDBCDAO();
     final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
+    final WalletDAO walletDAO = new WalletJDBCDAO(connection);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -31,14 +32,17 @@ public class CodecoolerProfileView extends HttpServlet {
         String email = request.getParameter("email");
 
         Codecooler codecooler = codecoolerDAO.getCodecoolerByEmail(email);
-        String email1 = LoginController.userEmail;
+        String userEmail = LoginController.userEmail;
+
+        Wallet wallet = walletDAO.getWalletByEmail(userEmail);
 
         request.setAttribute("codecooler", codecooler);
+        request.setAttribute("wallet", wallet);
 
         List<Quest> listQuests = QuestDAO.listAllQuests();
         request.setAttribute("listQuests", listQuests);
 
-        List<Artifact> listArtifacts = codecoolerDAO.listCodecoolersArtifacts(email1);
+        List<Artifact> listArtifacts = codecoolerDAO.listCodecoolersArtifacts(userEmail);
         request.setAttribute("listArtifacts", listArtifacts);
 
         dispatcher.forward(request, response);
