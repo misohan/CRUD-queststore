@@ -16,7 +16,6 @@ import java.io.IOException;
 @WebServlet(name = "addCCMentorViewCodecooler", urlPatterns = {"/addCCMentorViewCodecooler"}, loadOnStartup = 6)
 public class AddCodecooler extends HttpServlet {
     private UserSQLConnection connection = new UserSQLConnection();
-
     final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)

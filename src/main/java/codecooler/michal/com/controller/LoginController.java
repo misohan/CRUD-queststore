@@ -44,7 +44,6 @@ public class LoginController extends HttpServlet {
             else if(userDAO.getUserByEmailAndPassword(email, password).getIsAdmin().equals("mentor")) {
                 response.sendRedirect("/mentorCodecoolerView");
             }
-
         }else{
             request.setAttribute("message","Wrong credential");
             response.sendRedirect("/login");

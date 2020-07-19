@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class CodecoolerProfileView extends HttpServlet {
     private UserSQLConnection connection = new UserSQLConnection();
 
-    final QuestDAO QuestDAO = new QuestJDBCDAO();
+    final QuestDAO QuestDAO = new QuestJDBCDAO(connection);
     final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
     final WalletDAO walletDAO = new WalletJDBCDAO(connection);
 

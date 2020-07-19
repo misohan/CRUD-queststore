@@ -31,8 +31,6 @@ public class EditMentor extends HttpServlet {
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
         int id = Integer.parseInt(request.getParameter("id"));
         Mentor mentor = mentorDAO.getMentorById(id);
 

@@ -2,6 +2,7 @@ package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.ArtifactDAO;
+import codecooler.michal.com.exception.DatabaseException;
 import codecooler.michal.com.model.Artifact;
 import codecooler.michal.com.model.Quote;
 
@@ -32,12 +33,10 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
             pst.setString(3, artifact.getDescription());
             pst.setInt(4, artifact.getCredit());
 
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
     }
 
@@ -72,7 +71,6 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         return null;
     }
 
-
     @Override
     public void removeArtifact(Artifact artifact) {
         String sql = "DELETE FROM artifacts WHERE id=?";
@@ -86,38 +84,6 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public List<Artifact> listCodecoolersArtifacts(int id) {
-        ResultSet resultSet = null;
-        List<Artifact> listArtifacts = new ArrayList<>();
-
-        String sql = "SELECT * FROM ccartifacts WHERE id = ?";
-
-        try (Connection con = connection.connect();
-             PreparedStatement pst = con.prepareStatement(sql)) {
-
-            pst.setInt(1,id);
-            resultSet = pst.executeQuery();
-
-            while (resultSet.next()) {
-
-                Artifact artifact = new Artifact();
-
-                artifact.setId(resultSet.getInt("id"));
-                artifact.setTitle(resultSet.getString("title"));
-                artifact.setDescription(resultSet.getString("description"));
-                artifact.setCredit(resultSet.getInt("credit"));
-
-                listArtifacts.add(artifact);
-            }
-            return listArtifacts;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     @Override
@@ -146,7 +112,5 @@ public class ArtifactJDBCDAO implements ArtifactDAO {
         }
         return null;
     }
-
-
 }
 

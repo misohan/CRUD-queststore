@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "artifactshop", urlPatterns = {"/artifactshop"}, loadOnStartup = 10)
-public class CodecoolerArtifactView extends HttpServlet {
+public class CodecoolerViewArtifact extends HttpServlet {
     private UserSQLConnection connection = new UserSQLConnection();
     final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
     final ArtifactDAO artifactDAO = new ArtifactJDBCDAO();

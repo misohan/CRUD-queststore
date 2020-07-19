@@ -2,6 +2,7 @@ package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.CodecoolerDAO;
+import codecooler.michal.com.exception.DatabaseException;
 import codecooler.michal.com.model.Artifact;
 import codecooler.michal.com.model.Codecooler;
 import codecooler.michal.com.model.Mentor;
@@ -38,12 +39,10 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
             pst.setInt(4, codecooler.getAge());
             pst.setString(5, codecooler.getEmail());
 
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
 
     }
@@ -75,7 +74,7 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
             return listCodecooler;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();;
         }
         return null;
     }
@@ -89,9 +88,9 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
 
             pst.setInt(1, codecooler.getId());
             pst.executeUpdate();
-            System.out.println("Data deleted successfully");
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
         }
     }
 
@@ -100,7 +99,7 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
 
     }
 
-//    @Override
+    @Override
     public Codecooler getCodecoolerByEmail(String email) {
         try
                 (Connection con = connection.connect();
@@ -116,29 +115,25 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
                 return new Codecooler(userEmail);
             }
 
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(UserJDBCDAO.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
         }
         return null;
     }
     @Override
     public boolean checkIfCodecoolerExists(String email) {
-        try
-                (Connection con = connection.connect();
-                 PreparedStatement pst = con.prepareStatement("select * from users where email = ?");
-                ) {
-            pst.setString(1, email);
+        try (Connection con = connection.connect();
+             PreparedStatement pst = con.prepareStatement("select * from users where email = ?");
+            ) {
 
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
                 return true;
             }
-
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(UserJDBCDAO.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
         }
         return false;
     }
@@ -180,7 +175,6 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
         String sql = "INSERT INTO ccartifacts (email, id, title, description, credit) " +
                 "VALUES (?,?,?,?,?);";
 
-
         try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
@@ -190,15 +184,10 @@ public class CodecoolerJDBCDAO implements CodecoolerDAO {
             pst.setString(4, description);
             pst.setInt(5, credit);
 
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
-
     }
-
-
 }

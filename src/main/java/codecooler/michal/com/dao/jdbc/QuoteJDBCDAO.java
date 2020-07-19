@@ -3,7 +3,6 @@ package codecooler.michal.com.dao.jdbc;
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.QuoteDAO;
 import codecooler.michal.com.exception.DatabaseException;
-import codecooler.michal.com.model.Mentor;
 import codecooler.michal.com.model.Quote;
 
 import java.sql.Connection;
@@ -50,8 +49,6 @@ public class QuoteJDBCDAO implements QuoteDAO {
 
                 quote.setQuoteId(resultSet.getInt("id"));
                 quote.setQuoteText(resultSet.getString("quotetext"));
-
-
             }
             return quote;
 

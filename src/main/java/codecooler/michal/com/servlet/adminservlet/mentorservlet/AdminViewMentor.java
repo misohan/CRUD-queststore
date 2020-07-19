@@ -45,7 +45,6 @@ public class AdminViewMentor extends HttpServlet {
 
         request.setAttribute("user", user);
 
-
         List<Mentor> listMentors = mentorDAO.listAllMentors();
         request.setAttribute("listMentors", listMentors);
         dispatcher.forward(request, response);

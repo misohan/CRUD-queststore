@@ -84,6 +84,41 @@ body {
 .form .register-form{
 	display: none;
 }
+.serif {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.inv{
+  display: none;
+}
+
+.invedit{
+  display: none;
+}
+
+body {
+  background-color: #db4041;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #4c98cb;
+
+}
+
+table {
+  margin: 0 auto; /* or margin: 0 auto 0 auto */
+  height:100px;
+  overflow:auto
+}
+
+h2{
+  color: #4c98cb;
+}
+
+.header {
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  background: white;
+}
 
 
 

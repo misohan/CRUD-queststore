@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "addCCArtifact", urlPatterns = {"/addCCArtifact"}, loadOnStartup = 2)
-public class AddArtifactCCView extends HttpServlet {
+public class AddArtifact extends HttpServlet {
     private UserSQLConnection connection = new UserSQLConnection();
     final CodecoolerDAO codecoolerDAO = new CodecoolerJDBCDAO(connection);
     final ArtifactDAO artifactDAO = new ArtifactJDBCDAO();

@@ -2,7 +2,7 @@ package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.UserDAO;
-import codecooler.michal.com.model.Mentor;
+import codecooler.michal.com.exception.DatabaseException;
 import codecooler.michal.com.model.User;
 
 import java.sql.*;
@@ -34,9 +34,8 @@ public class UserJDBCDAO implements UserDAO {
                 return new User(userEmail, userPassword, isAdmin);
             }
 
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(UserJDBCDAO.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
         }
         return null;
     }
@@ -55,12 +54,11 @@ public class UserJDBCDAO implements UserDAO {
                 return true;
             }
 
-        } catch (SQLException ex) {
-            Logger lgr = Logger.getLogger(UserJDBCDAO.class.getName());
-            lgr.log(Level.SEVERE, ex.getMessage(), ex);
+        } catch (SQLException e) {
+            throw new DatabaseException(e.getMessage());
+
         }
         return false;
     }
-
 
 }

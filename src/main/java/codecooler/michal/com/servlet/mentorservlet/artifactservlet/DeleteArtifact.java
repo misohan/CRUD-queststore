@@ -21,7 +21,6 @@ public class DeleteArtifact extends HttpServlet {
         Artifact artifact = new Artifact(id);
         artifactDAO.removeArtifact(artifact);
         response.sendRedirect("mentorArtifacts");
-
     }
 }
 

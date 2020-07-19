@@ -1,5 +1,6 @@
 package codecooler.michal.com.servlet.adminservlet.questservlet;
 
+import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
 import codecooler.michal.com.dao.jdbc.QuestJDBCDAO;
 import codecooler.michal.com.model.Quest;
@@ -15,7 +16,8 @@ import java.util.List;
 
 @WebServlet(name = "listQuests", urlPatterns = {"/quests"}, loadOnStartup = 1)
 public class AdminViewQuest extends HttpServlet {
-    final QuestDAO QuestDAO = new QuestJDBCDAO();
+    private UserSQLConnection connection = new UserSQLConnection();
+    final QuestDAO QuestDAO = new QuestJDBCDAO(connection);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

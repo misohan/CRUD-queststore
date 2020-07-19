@@ -1,5 +1,6 @@
 package codecooler.michal.com.servlet.mentorservlet.questservlet;
 
+import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
 import codecooler.michal.com.dao.jdbc.QuestJDBCDAO;
 import codecooler.michal.com.model.Quest;
@@ -13,7 +14,8 @@ import java.io.IOException;
 
 @WebServlet(name = "deleteMentorQuest", urlPatterns = {"/deleteMentorQuest"}, loadOnStartup = 3)
 public class DeleteQuest extends HttpServlet {
-    final QuestDAO questDAO = new QuestJDBCDAO();
+    private UserSQLConnection connection = new UserSQLConnection();
+    final QuestDAO questDAO = new QuestJDBCDAO(connection);
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

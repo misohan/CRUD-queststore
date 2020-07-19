@@ -2,6 +2,7 @@ package codecooler.michal.com.dao.jdbc;
 
 import codecooler.michal.com.UserSQLConnection;
 import codecooler.michal.com.dao.interfacedao.QuestDAO;
+import codecooler.michal.com.exception.DatabaseException;
 import codecooler.michal.com.model.Quest;
 
 import javax.sql.DataSource;
@@ -13,11 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuestJDBCDAO implements QuestDAO {
-    private final UserSQLConnection dbConn = new UserSQLConnection();
     private UserSQLConnection connection;
 
-    public QuestJDBCDAO()    {
-        this.connection = new UserSQLConnection();
+    public QuestJDBCDAO(UserSQLConnection connection)    {
+        this.connection = connection;
     }
 
 
@@ -26,7 +26,7 @@ public class QuestJDBCDAO implements QuestDAO {
         String sql = "INSERT INTO quests (id, title, description, credit) " +
                 "VALUES (?,?,?,?);";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, quest.getId());
@@ -34,12 +34,10 @@ public class QuestJDBCDAO implements QuestDAO {
             pst.setString(3, quest.getDescription());
             pst.setInt(4, quest.getCredit());
 
-            System.out.println(sql);
-
             pst.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
     }
 
@@ -50,7 +48,7 @@ public class QuestJDBCDAO implements QuestDAO {
 
         String sql = "SELECT * FROM quests";
 
-        try (Connection con = dbConn.connect();
+        try (Connection con = connection.connect();
              PreparedStatement pst = con.prepareStatement(sql)) {
 
             resultSet = pst.executeQuery();
@@ -78,14 +76,14 @@ public class QuestJDBCDAO implements QuestDAO {
     public void removeQuest(Quest quest) {
         String sql = "DELETE FROM quests WHERE id=?";
         try
-                (Connection con = dbConn.connect();
+                (Connection con = connection.connect();
                  PreparedStatement pst = con.prepareStatement(sql)) {
 
             pst.setInt(1, quest.getId());
             pst.executeUpdate();
-            System.out.println("Data deleted successfully");
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DatabaseException(e.getMessage());
         }
     }
 }
