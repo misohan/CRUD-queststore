@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "deleteArtifact", urlPatterns = {"/deleteArtifact"}, loadOnStartup = 4)
+@WebServlet(name = "deleteMentorArtifact", urlPatterns = {"/deleteMentorArtifact"}, loadOnStartup = 4)
 public class DeleteArtifact extends HttpServlet {
     final ArtifactDAO artifactDAO = new ArtifactJDBCDAO();
 

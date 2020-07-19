@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "addQuest", urlPatterns = {"/addQuest"}, loadOnStartup = 6)
+@WebServlet(name = "addMentorQuest", urlPatterns = {"/addMentorQuest"}, loadOnStartup = 6)
 public class AddQuest extends HttpServlet {
     final QuestDAO questDAO = new QuestJDBCDAO();
 
@@ -25,11 +25,11 @@ public class AddQuest extends HttpServlet {
 
         Quest quest = new Quest(id, title, description, credit);
         questDAO.createQuest(quest);
-        response.sendRedirect("quests");
+        response.sendRedirect("mentorQuests");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/admin-quest-view.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/mentor-quest-view.jsp");
         dispatcher.forward(request, response);
     }
 

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "addArtifact", urlPatterns = {"/addArtifact"}, loadOnStartup = 4)
+@WebServlet(name = "addMentorArtifact", urlPatterns = {"/addMentorArtifact"}, loadOnStartup = 4)
 public class AddArtifact extends HttpServlet {
     final ArtifactDAO ArtifactDAO = new ArtifactJDBCDAO();
 
@@ -25,7 +25,7 @@ public class AddArtifact extends HttpServlet {
 
         Artifact artifact = new Artifact(id, title, description, credit);
         ArtifactDAO.createArtifact(artifact);
-        response.sendRedirect("artifacts");
+        response.sendRedirect("mentorArtifacts");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
