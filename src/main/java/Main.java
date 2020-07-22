@@ -19,7 +19,7 @@ public class Main {
 
 
 
-        System.out.println(walletDAO.getWalletByEmail("a@a.com").getAccountBalance());
+        System.out.println(walletDAO.getWalletByEmail("a@b.com").getAccountBalance()); //test commit for merge
 
 
 
