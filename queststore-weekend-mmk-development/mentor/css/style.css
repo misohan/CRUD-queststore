@@ -1,0 +1,120 @@
+body {
+  background-color: #db4041;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+h2{
+  color: #4c98cb;
+}
+p{
+  color: #4c98cb;
+}
+
+.header {
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  color: #4c98cb;
+  font-size: 30px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #4c98cb;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  position: relative;
+  top: 0;
+  width: 100%;
+}
+
+.footer {
+  position: relative;
+  padding: 5px;
+  text-align: left;
+  background: #ddd;
+  margin-top: 100px;
+}
+
+.topnav a {
+  float: left;
+  color: #4c98cb;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #379683;
+  color: #05386B;
+}
+
+.topnav a.active {
+  background-color: #4c98cb;
+  color: #f2f2f2;
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding in columns */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the counter cards */
+.card {
+  margin: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+  height: 400px;
+  color: #05386B;
+}
+
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+    
+
+  }
+}
+.form{
+  padding: 10px;
+  color: #05386B;
+}
+
+.column1 {
+  float: left;
+  width: 25%;
+  padding: 0 10px;
+}
+
+.inv{
+  display: none;
+}

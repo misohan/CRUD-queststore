@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+
+</head>
+
+<body>
+  <div class="header">
+    <h1>Admin menu</h1>
+    <p>Your personal dashboard</p>
+  </div>
+  <div class="topnav">
+    <a class="active">Options</a>
+    <a href="../admin/admin-codecooler-view.html">Codecoolers</a>
+    <a href="../admin/admin-mentor-view.html">Mentors</a>
+    <a href="../mentor/mentor.html">Artifacts</a>
+    <a href="../mentor/mentor.html">Quest
+
+
+    <a href="../loginPage/loginPage.html">Login page</a>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <h2>Create codecooler account</h2>   
+           
+        
+        <div id="mentor" class="vis">
+          <div class="form">
+            <form>
+              <label for="fname">First name:</label><br>
+              <input type="text" id="fname" name="fname"><br><br>
+              <label for="lname">Last name:</label><br>
+              <input type="text" id="fname" name="fname"><br><br>
+              <input class="button button2" type="submit" value="Create">
+            </form>
+          </div>
+        </div>         
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        
+        <table border="1" cellpadding="5">
+          <caption><h2>List of codecoolers</h2></caption>
+          <tr>
+              <th>ID</th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Age</th>
+              <th>Action</th>
+          </tr>
+          <c:forEach var="mentor" items="${listMentor}">
+              <tr>
+                  <td><c:out value="${mentor.id}" /></td>
+                  <td><c:out value="${mentor.firstName}" /></td>
+                  <td><c:out value="${mentor.lastName}" /></td>
+                  <td><c:out value="${mentor.age}" /></td>
+                  <td>
+                      <a href="/edit?id=<c:out value='${mentor.id}' />">Edit</a>
+                      <a href="/delete?id=<c:out value='${mentor.id}' />">Delete</a>
+                  </td>
+              </tr>
+          </c:forEach>
+      </table>
+      
+      </div>            
+    </div>
+  </div>
+  <script src="admin.js"></script>
+
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+</body>
+
+
+</html>

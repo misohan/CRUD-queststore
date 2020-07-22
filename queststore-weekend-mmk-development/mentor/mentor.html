@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="mentor.js"></script>
+
+</head>
+
+<body>
+  <div class="backgroundlogo"><img src="logo.png" alt="backgroundlogo"></div>
+  <div class="header">
+    <h1>Mentor menu</h1>
+    <p>Your personal dashboard</p>
+  </div>
+  <div class="topnav">
+    <a class="active">Options</a>
+    <a class="active" href="index.html">Home</a>
+    <a class="active" href="contact.html">Contact</a>
+    <a class="active" href="loginPage/loginPage.html">Logout</a>
+
+  </div>
+
+  <div class="row">
+    <div class="column">
+      <div class="card">
+        <h2>Codecooler option</h2>
+   
+        <!-- <label for="options">Codecooler option</label> -->
+        <select id="create">
+
+          <option value="class">Create codecooler</option>
+          <option value="mentor">View codecooler summary wallet</option>
+          <select>
+            
+
+            <div id="mentor" class="inv">
+              <div class="form">
+                <form action="/action_page.php">
+                  <label for="fname">First name:</label><br>
+                  <input type="text" id="fname" name="fname"><br><br>
+                  <label for="lname">Last name:</label><br>
+                  <input type="text" id="fname" name="fname"><br><br>
+                  <input type="submit" value="Show">
+                </form>
+              </div>
+            </div>
+            <div id="class" class="inv">
+              <div class="form">
+                <form>
+                  <label for="fname">First name:</label><br>
+                  <input type="text" id="fname" name="fname"><br><br>
+                  <label for="lname">Last name:</label><br>
+                  <input type="text" id="fname" name="fname"><br><br>
+                  <label for="fname">Class name:</label><br>
+                  <input type="text" id="fname" name="fname"><br><br>
+                  <input type="submit" value="Create">
+                </form>
+              </div>
+            </div>
+            <div id="experience" class="inv"><div class="form">
+              <form>
+                <label for="fname">Experience name:</label><br>
+                <input type="text" id="fname" name="fname"><br><br>
+                <label for="lname">Credits required:</label><br>
+                <input type="text" id="fname" name="fname"><br><br>
+                <label for="lname">Date:</label><br>
+                <input type="text" id="fname" name="fname"><br><br>
+                <input type="submit" value="Create">
+              </form>
+            </div></div>
+            <script src="mentor.js"></script>
+
+            <br><br>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card">
+        <h2>Artifact options</h2>
+        <select name="options" id="options">
+          <option value="Pampy">Add artifact</option>
+          <option value="Lampy">Update artifact</option>
+          <option value="Gampy">Split artifact</option>
+          <option value="Jumpy">Mark artifact</option>
+        </select>
+        <div class="form">
+          <form action="/action_page.php">
+            <label for="fname">Name:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Quantity:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+            <input type="submit" value="Submit changes">
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="column">
+      <div class="card">
+        <h2>Quest options</h2>
+        <select name="options" id="options">
+          <option value="Pampy">Add quest</option>
+          <option value="Lampy">Update quest</option>
+          <option value="Gampy">Split quest</option>
+          <option value="Jumpy">Mark quest</option>
+        </select>
+        <div class="form">
+          <form action="/action_page.php">
+            <label for="fname">Name:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+            <label for="lname">Quantity:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+            <input type="submit" value="Submit changes">
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="column">
+      <div class="card">
+        <h2>View Mentor's profile</h2>
+        <select name="options" id="options">
+          <option value="Pampy">Pampy</option>
+          <option value="Lampy">Lampy</option>
+          <option value="Gampy">Gampy</option>
+          <option value="Jumpy">Jumpy</option>
+      </div>
+    </div> -->
+
+  </div>
+
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+</body>
+
+
+</html>
